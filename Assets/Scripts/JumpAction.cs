@@ -7,9 +7,9 @@ public class JumpAction : NetworkBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+       
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -17,7 +17,7 @@ public class JumpAction : NetworkBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Transform.Translate(transform.position.x, 4, 4);
+            Transform.Translate(transform.position.x, 1, 2);
         }
     }
 }
