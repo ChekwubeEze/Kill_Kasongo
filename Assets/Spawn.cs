@@ -4,10 +4,6 @@ using Unity.Netcode;
 public class Spawn : NetworkBehaviour
 {
     public GameObject Spawnable;
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -16,8 +12,16 @@ public class Spawn : NetworkBehaviour
         {
             if (Input.GetKeyDown(KeyCode.S))
             {
-                Spawnable.SetActive(true);
+                SpawnServerRpc();
             }
         }
     }
+    [ServerRpc(RequireOwnership =false)]
+    void SpawnServerRpc()
+    {
+        GameObject obj = Instantiate(Spawnable , transform.position + Vector3.forward, Quaternion.identity);
+        obj.GetComponent<NetworkObject>().Spawn(true);
+    }
+
+
 }
