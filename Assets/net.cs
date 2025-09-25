@@ -1,6 +1,7 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class net : MonoBehaviour
+public class net : NetworkBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -11,6 +12,13 @@ public class net : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Transform.Translate(Vector3.forward * 4 Time.deltaTime);
+        if (!IsOwner) return;
+        {
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.forward * 4 * Time.deltaTime);
+            }
+        }
+       
     }
 }
