@@ -5,11 +5,13 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 3.5f;
     private Rigidbody rb;
     public float rotateSpeed = 100.0f;
+    private Animator anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,5 +24,7 @@ public class PlayerMovement : MonoBehaviour
             rb.MoveRotation(rb.rotation * Quaternion.Euler(rotateY));
         }
         rb.MovePosition(rb.position + transform.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime+ transform.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime);
+        anim.SetFloat("BlendV", Input.GetAxis("Vertical"));
+        anim.SetFloat("BlendH", Input.GetAxis("Horizontal"));
     }
 }
