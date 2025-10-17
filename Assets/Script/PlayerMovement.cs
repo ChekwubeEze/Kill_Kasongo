@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     public float rotateSpeed = 100.0f;
     private Animator anim;
+    private int jumpForce =5;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,5 +27,17 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + transform.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime+ transform.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime);
         anim.SetFloat("BlendV", Input.GetAxis("Vertical"));
         anim.SetFloat("BlendH", Input.GetAxis("Horizontal"));
+    }
+    private void Update()
+
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (rb != null)
+            {
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+        }
     }
 }
