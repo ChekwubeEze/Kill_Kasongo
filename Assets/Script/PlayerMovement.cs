@@ -1,6 +1,7 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public float moveSpeed = 3.5f;
     private Rigidbody rb;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!IsOwner) return;
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
         Vector3 rotateY = new Vector3(0, Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime, 0);
         if (movement != Vector3.zero)
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
 
     {
+        if (!IsOwner) return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (rb != null)
