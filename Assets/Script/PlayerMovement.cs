@@ -35,8 +35,8 @@ public class PlayerMovement : NetworkBehaviour
         //    controller(rb.rotation * Quaternion.Euler(rotateY));
         //}
         //rb.MovePosition(rb.position + transform.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime+ transform.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime);
-        //anim.SetFloat("BlendV", Input.GetAxis("Vertical"));
-        //anim.SetFloat("BlendH", Input.GetAxis("Horizontal"));
+        anim.SetFloat("BlendV", Input.GetAxis("Vertical"));
+        anim.SetFloat("BlendH", Input.GetAxis("Horizontal"));
     }
     private void Update()
 
@@ -56,13 +56,13 @@ public class PlayerMovement : NetworkBehaviour
     }
     public override void OnNetworkSpawn()
     {
-        if (!IsOwner)
+        if (IsOwner)
         {
-            if (cinemachineCamera == null)
-                return;
-            {
-                Destroy(cinemachineCamera.gameObject);
-            }
+
+        }
+        else
+        {
+            Destroy(cinemachineCamera.gameObject);
         }
     }
    
