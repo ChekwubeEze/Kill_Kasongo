@@ -216,9 +216,9 @@ public class LobbyManager : MonoBehaviour {
                     field: QueryOrder.FieldOptions.Created)
             };
 
-            var response = await LobbyService.Instance.QueryLobbiesAsync(options);
+            QueryResponse lobbyListQueryResponse = await Lobbies.Instance.QueryLobbiesAsync();
 
-            OnLobbyListChanged?.Invoke(this, new OnLobbyListChangedEventArgs { lobbyList = response.Results });
+            OnLobbyListChanged?.Invoke(this, new OnLobbyListChangedEventArgs { lobbyList = lobbyListQueryResponse.Results });
         } catch (LobbyServiceException e) {
             Debug.Log(e);
         }
@@ -338,9 +338,8 @@ public class LobbyManager : MonoBehaviour {
     public async void UpdateLobbyGameMode(GameMode gameMode) {
         try {
             Debug.Log("UpdateLobbyGameMode " + gameMode);
-
             
-            Lobby lobby = await LobbyService.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions {
+            Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions {
                 Data = new Dictionary<string, DataObject> {
                     { KEY_GAME_MODE, new DataObject(DataObject.VisibilityOptions.Public, gameMode.ToString()) }
                 }
