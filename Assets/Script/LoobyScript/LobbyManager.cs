@@ -65,22 +65,29 @@ public class LobbyManager : MonoBehaviour {
         HandleLobbyPolling();
     }
 
-    public async void Authenticate(string playerName) {
+    public async void Authenticate(string playerName)
+    {
         this.playerName = playerName;
+
         InitializationOptions initializationOptions = new InitializationOptions();
-        initializationOptions.SetProfile(playerName);
+
+        string uniqueProfile = "profile_" + UnityEngine.Random.Range(10000, 99999);
+
+        initializationOptions.SetProfile(uniqueProfile);
+
+        Debug.Log("Using Auth Profile: " + uniqueProfile);
 
         await UnityServices.InitializeAsync(initializationOptions);
 
-        AuthenticationService.Instance.SignedIn += () => {
-            // do nothing
-            Debug.Log("Signed in! " + AuthenticationService.Instance.PlayerId);
-
+        AuthenticationService.Instance.SignedIn += () =>
+        {
+            Debug.Log("Signed in! PlayerID: " + AuthenticationService.Instance.PlayerId);
             RefreshLobbyList();
         };
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
+
 
     private void HandleRefreshLobbyList() {
         if (UnityServices.State == ServicesInitializationState.Initialized && AuthenticationService.Instance.IsSignedIn) {
