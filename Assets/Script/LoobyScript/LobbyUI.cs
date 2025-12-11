@@ -64,6 +64,8 @@ public class LobbyUI : MonoBehaviour {
         LobbyManager.Instance.OnLobbyGameModeChanged += UpdateLobby_Event;
         LobbyManager.Instance.OnLeftLobby += LobbyManager_OnLeftLobby;
         LobbyManager.Instance.OnKickedFromLobby += LobbyManager_OnLeftLobby;
+        LobbyManager.Instance.OnGameStarted += LobbyManager_OnGameStarted;
+
 
         Hide();
     }
@@ -75,6 +77,11 @@ public class LobbyUI : MonoBehaviour {
 
     private void UpdateLobby_Event(object sender, LobbyManager.LobbyEventArgs e) {
         UpdateLobby();
+    }
+    private void LobbyManager_OnGameStarted(object sender, System.EventArgs e)
+    {
+        
+        Hide();
     }
 
     private void UpdateLobby() {
