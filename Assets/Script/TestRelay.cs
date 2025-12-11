@@ -31,26 +31,57 @@ public class TestRelay : MonoBehaviour
     {
         try
         {
+         
+            if (RelayService.Instance == null)
+            {
+               
+                return null;
+            }
+
+            Debug.Log(" Creating Allocation...");
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
 
+            if (allocation == null)
+            {
+               
+                return null;
+            }
+
+            
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+            
 
-            Debug.Log(joinCode);
-
+           
+            
             RelayServerData relayServerData = allocation.ToRelayServerData("dtls");
 
+            
+            
+            if (NetworkManager.Singleton == null)
+            {
+                
+                return null;
+            }
 
+            if (NetworkManager.Singleton.GetComponent<UnityTransport>() == null)
+            {
+               
+                return null;
+            }
+
+            
             NetworkManager.Singleton
                 .GetComponent<UnityTransport>()
                 .SetRelayServerData(relayServerData);
 
+            
             NetworkManager.Singleton.StartHost();
 
             return joinCode;
         }
-        catch (RelayServiceException e)
+        catch (System.Exception e) 
         {
-            Debug.Log(e);
+            
             return null;
         }
     }
