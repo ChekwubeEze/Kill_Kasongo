@@ -22,29 +22,39 @@ public class LobbyUI : MonoBehaviour {
     [SerializeField] private Button changeZombieButton;
     [SerializeField] private Button leaveLobbyButton;
     [SerializeField] private Button changeGameModeButton;
+    [SerializeField] private Button startGameButton;
 
-
-    private void Awake() {
+    private void Awake()
+    {
         Instance = this;
 
         playerSingleTemplate.gameObject.SetActive(false);
 
-        changeMarineButton.onClick.AddListener(() => {
+        changeMarineButton.onClick.AddListener(() =>
+        {
             LobbyManager.Instance.UpdatePlayerCharacter(LobbyManager.PlayerCharacter.Marine);
         });
-        changeNinjaButton.onClick.AddListener(() => {
+        changeNinjaButton.onClick.AddListener(() =>
+        {
             LobbyManager.Instance.UpdatePlayerCharacter(LobbyManager.PlayerCharacter.Ninja);
         });
-        changeZombieButton.onClick.AddListener(() => {
+        changeZombieButton.onClick.AddListener(() =>
+        {
             LobbyManager.Instance.UpdatePlayerCharacter(LobbyManager.PlayerCharacter.Zombie);
         });
 
-        leaveLobbyButton.onClick.AddListener(() => {
+        leaveLobbyButton.onClick.AddListener(() =>
+        {
             LobbyManager.Instance.LeaveLobby();
         });
 
-        changeGameModeButton.onClick.AddListener(() => {
+        changeGameModeButton.onClick.AddListener(() =>
+        {
             LobbyManager.Instance.ChangeGameMode();
+        });
+        startGameButton.onClick.AddListener(() =>
+        {
+            LobbyManager.Instance.StartGame();
         });
     }
 
