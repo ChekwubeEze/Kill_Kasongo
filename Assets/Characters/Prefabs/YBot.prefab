@@ -5605,6 +5605,7 @@ GameObject:
   - component: {fileID: 8549042120805498971}
   - component: {fileID: 2535922043114602553}
   - component: {fileID: 1483901106447056980}
+  - component: {fileID: 2609160226109043690}
   m_Layer: 0
   m_Name: YBot
   m_TagString: Untagged
@@ -5782,6 +5783,21 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   TransitionStateInfoList: []
   m_Animator: {fileID: 3389861099413187527}
+--- !u!114 &2609160226109043690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730809550129686919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8396e22f8fb3ecc49b4a7c4977f84e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  Score:
+    m_InternalValue: 0
 --- !u!1 &1761084176024001235
 GameObject:
   m_ObjectHideFlags: 0

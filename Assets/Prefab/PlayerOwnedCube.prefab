@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4205040904994600534}
   - component: {fileID: 2768342717226242679}
   - component: {fileID: 6054881531892124796}
-  - component: {fileID: 3322746289905362811}
+  - component: {fileID: 4400374160996912868}
   m_Layer: 0
   m_Name: PlayerOwnedCube
   m_TagString: Untagged
@@ -158,25 +158,23 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3322746289905362811
+--- !u!114 &4400374160996912868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8620534065623958153}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d1a72a707dcce843b6c5a178e558629, type: 3}
+  m_Script: {fileID: 11500000, guid: c04a38dc2ec5d7b44a8cd1c60ddd23ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  ownerClientId: 4
-  cubePrefab: {fileID: 8620534065623958153}
-  minSpawnPos: {x: 0, y: 0, z: 0}
-  maxSpawnPos: {x: 10, y: 0, z: 10}
+  TargetClientId:
+    m_InternalValue: 0
