@@ -23,7 +23,7 @@ namespace Assets.Scripts.SpawnManager
 
         [Header("Rules")]
         [SerializeField] private int cubesPerPlayer = 3;
-        [SerializeField] private int scoreToWin = 1;
+        [SerializeField] private int scoreToWin = 2;
         [SerializeField] private float cubeSpawnYOffset = 0.5f;
 
         private Transform[] collectibleSpawns;

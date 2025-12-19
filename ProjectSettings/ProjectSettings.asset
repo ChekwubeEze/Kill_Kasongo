@@ -927,11 +927,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 407be74b-b518-4e1c-a351-a02aee49ca8e
+  cloudProjectId: cb9b7ab9-2cf6-46e4-9237-6f0fb63219a8
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Kill_Kasongo
-  organizationId: pklniraj
+  projectName: Kill_Kasongo (1)
+  organizationId: chekwubeeze
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

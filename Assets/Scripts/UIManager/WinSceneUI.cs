@@ -12,9 +12,18 @@ namespace Assets.Scripts.UIManager
     {
         [SerializeField] private TMP_Text winnerText;
 
+        ulong n = WinData.WinnerClientId;
         private void Start()
         {
-            winnerText.text = $"Player {WinData.WinnerClientId} Wins!";
+            if(n == 0)
+            {
+                winnerText.text = "Eze Wins!!!!!";
+            }
+            else
+            {
+                winnerText.text = "Niraj Wins!!!!!";
+            }
+            //winnerText.text = $"Player {WinData.WinnerClientId} Wins!";
         }
     }
 }

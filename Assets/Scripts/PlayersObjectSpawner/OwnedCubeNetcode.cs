@@ -4,10 +4,10 @@ using UnityEngine;
 public class OwnedCubeNetcode : NetworkBehaviour
 {
     [Header("Ownership")]
-    public ulong ownerClientId;        // which client owns this cube
+    public ulong ownerClientId;        
 
     [Header("Spawning")]
-    public GameObject cubePrefab;      // networked cube prefab (with NetworkObject)
+    public GameObject cubePrefab;      
     public Vector3 minSpawnPos;
     public Vector3 maxSpawnPos;
 
@@ -20,12 +20,10 @@ public class OwnedCubeNetcode : NetworkBehaviour
         var player = other.GetComponent<PlayerIdNetcode>();
         if (player == null) return;
 
-        // Only the owner client can destroy this cube
         if (player.ClientId != ownerClientId) return;
 
-        // Correct owner touched the cube: respawn and destroy
         SpawnNewCubeForSameOwner();
-        NetworkObject.Despawn(true); // true = destroy object on clients as well
+        NetworkObject.Despawn(true); 
     }
 
     private void SpawnNewCubeForSameOwner()
@@ -48,8 +46,7 @@ public class OwnedCubeNetcode : NetworkBehaviour
         newCubeScript.minSpawnPos = minSpawnPos;
         newCubeScript.maxSpawnPos = maxSpawnPos;
 
-        // Spawn for all clients. You can optionally assign ownership here if you want:
-        // newCubeNetObj.SpawnWithOwnership(ownerClientId);
+        
         newCubeNetObj.Spawn();
     }
 }

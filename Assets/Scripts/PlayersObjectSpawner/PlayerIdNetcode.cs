@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerIdNetcode : NetworkBehaviour
 {
-    public ulong ClientId => OwnerClientId; // from NetworkBehaviour
+    public ulong ClientId => OwnerClientId; 
 
     // Optional: just to see it in the inspector for debugging
     [SerializeField] private ulong clientIdDebug;
